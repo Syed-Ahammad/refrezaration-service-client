@@ -1,7 +1,7 @@
 import React from 'react';
 import About from '../About/About';
 import Banner from '../Banner/Banner';
-import UpdateNews from '../UpdateNews/UpdateNews';
+import FAQ from '../FAQ/FAQ';
 import Services from '../Services/Services';
 import {useLoaderData} from 'react-router-dom';
 
@@ -12,8 +12,8 @@ const Home = () => {
         <div className='px-24'>
            <Banner></Banner>
            <Services services={services}></Services>
-           <UpdateNews></UpdateNews>
            <About></About>
+           <FAQ></FAQ>
         </div>
     );
 };
