@@ -1,16 +1,44 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
+
+  const {signIn} = useContext(AuthContext);
+
+
   //  sign in mathod authentication
   const handleSignIn = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
-    const password = form.password.value;
+    const password = form.pass.value;
     console.log(email, password);
-   
+    signIn(email, password)
+    .then(result =>{
+        const user = result.user;
+        console.log(user);
+        form.reset()
+        // navigate(from, { replace: true });
+
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  };
+
+  const handleGoogleSignIn = () => {
+    // signInWithGoogle(googleProvider)
+    //   .then((result) => {
+    //     const user = result.user;
+    //     console.log(user);
+    //     navigate(from, { replace: true });
+    //   })
+    //   .catch((error) => {
+    //     const errorMessage = error.message;
+    //     console.log(errorMessage);
+    //   });
   };
   return (
     <section className="h-fit my-16">

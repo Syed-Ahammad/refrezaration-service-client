@@ -60,7 +60,7 @@ const Header = () => {
       <div className="navbar-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img alt="" src="https://placeimg.com/80/80/people" />
+          <img alt="" src={user?.photoURL} />
         </div>
       </label>
       </div>
