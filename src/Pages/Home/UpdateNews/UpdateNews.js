@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OurTeam = () => {
+const UpdateNews = () => {
     return (
         <div>
             <h1 className="text-xl">Our Team section</h1>
@@ -8,4 +8,4 @@ const OurTeam = () => {
     );
 };
 
-export default OurTeam;
+export default UpdateNews;

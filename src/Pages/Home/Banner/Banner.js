@@ -3,10 +3,10 @@ import React from "react";
 const Banner = () => {
   return (
     <div
-      className="hero min-h-screen"
+      className="hero min-h-min rounded-lg mt-12"
       style={{ backgroundImage: `url("https://demo.htmlcodex.com/2574/ac-repair-website-template/img/carousel-2.jpg")` }}
     >
-      <div className="hero-overlay bg-opacity-60"></div>
+      <div className="hero-overlay bg-opacity-60 rounded-lg"></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">Quality Heating & Air Condition Services</h1>
