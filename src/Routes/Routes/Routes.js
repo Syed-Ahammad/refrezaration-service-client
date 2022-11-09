@@ -6,7 +6,7 @@ const { default: Login } = require("../../Pages/Login/Login");
 const { default: Register } = require("../../Pages/Register/Register");
 
 
-const routes = createBrowserRouter([
+export const routes = createBrowserRouter([
     {
         path: '/',
         element:<Main></Main>,
