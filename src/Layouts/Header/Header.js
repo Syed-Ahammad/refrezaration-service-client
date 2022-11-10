@@ -8,7 +8,7 @@ const Header = () => {
 
   const link = [
     {name: 'Home', path: '/',id: 1},
-    {name: 'Services', path: '/services', id: 2},
+    {name: 'Services', path: '/allServices', id: 2},
     {name: 'Blogs', path: '/blogs', id: 3},
   ]
 

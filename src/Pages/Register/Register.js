@@ -45,6 +45,7 @@ const Register = () => {
             />
           </div>
           <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+            <h1 className="text-2xl font-semibold"> Give Your Information for register</h1>
             <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"></div>
             <form onSubmit={handleCreateUser}>
               {/* <!-- Name and Email input --> */}

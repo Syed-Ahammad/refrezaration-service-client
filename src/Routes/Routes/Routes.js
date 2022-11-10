@@ -1,3 +1,5 @@
+import AllServices from "../../Pages/AllServices/AllServices";
+
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main/Main");
 const { default: Blogs } = require("../../Pages/Blogs/Blogs");
@@ -27,6 +29,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path:'/allServices',
+                loader: ()=> fetch(`http://localhost:5000/allServices`),
+                element: <AllServices></AllServices>
             }
         ]
     }

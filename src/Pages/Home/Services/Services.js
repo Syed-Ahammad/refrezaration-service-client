@@ -1,9 +1,13 @@
 import React from "react";
 
+
 const Services = ({services}) => {
+ 
+
+
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 mx-6 gap-4 my-12">
-      {services.map(service => <div className="card w-72 bg-base-100 shadow-xl">
+      {services.map(service => <div key={service._id} className="card w-72 bg-base-100 shadow-xl">
         <figure>
           <img src={service.image} alt="" />
         </figure>
