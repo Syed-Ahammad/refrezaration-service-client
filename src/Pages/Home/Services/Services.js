@@ -1,8 +1,9 @@
 import React from "react";
+import useTitle from "../../../Hooks/UseTitle";
 
 
 const Services = ({services}) => {
- 
+  useTitle('Services')
 
 
   return (

@@ -2,11 +2,13 @@ import React, {useContext} from "react";
 import { Link, useNavigate} from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import useTitle from "../../Hooks/UseTitle";
 
 const Login = () => {
 
   const {signIn} = useContext(AuthContext);
   const navigate = useNavigate();
+  useTitle('Login')
 
 
   //  sign in mathod authentication
