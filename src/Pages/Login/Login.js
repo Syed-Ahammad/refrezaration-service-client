@@ -3,12 +3,17 @@ import { Link, useNavigate} from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import useTitle from "../../Hooks/UseTitle";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
 
-  const {signIn} = useContext(AuthContext);
+  const {signIn, signInWithGoogle} = useContext(AuthContext);
+ 
+
+const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
-  useTitle('Login')
+  useTitle('Login');
+
 
 
   //  sign in mathod authentication
@@ -33,16 +38,17 @@ const Login = () => {
   };
 
   const handleGoogleSignIn = () => {
-    // signInWithGoogle(googleProvider)
-    //   .then((result) => {
-    //     const user = result.user;
-    //     console.log(user);
-    //     navigate(from, { replace: true });
-    //   })
-    //   .catch((error) => {
-    //     const errorMessage = error.message;
-    //     console.log(errorMessage);
-    //   });
+    signInWithGoogle(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        // navigate(from, { replace: true });
+        navigate('/');
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
   return (
     <section className="h-fit my-16">
@@ -59,14 +65,14 @@ const Login = () => {
             <form onSubmit={handleSignIn}>
               <div className="flex flex-row items-center justify-center lg:justify-start">
                 <p className="text-lg mb-0 mr-4">Sign in with</p>
-                <button
+                {/* <button
                   type="button"
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                   className="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
-                >
+                > */}
                   {/* <!-- Facebook --> */}
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512"
                     className="w-4 h-4"
@@ -77,9 +83,10 @@ const Login = () => {
                       d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
                     />
                   </svg>
-                </button>
+                </button> */}
 
                 <button
+                onClick={handleGoogleSignIn}
                   type="button"
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"

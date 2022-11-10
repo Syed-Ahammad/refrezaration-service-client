@@ -4,6 +4,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -28,12 +29,18 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, profile);
   };
 
-  // sign in with email andk password
+  // sign in with email and password
 
   const signIn = (email, password)=>{
     // setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
 };
+
+  //   sign in with google
+  const signInWithGoogle = (provider) => {
+    // setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
 
 // Log out for user
 const logOut = () => {
@@ -56,7 +63,7 @@ const logOut = () => {
   });
 
   // declar a variable for context api
-  const authentic = { user, createUser, updateUserProfile, signIn, logOut };
+  const authentic = { user, createUser, updateUserProfile, signIn,signInWithGoogle, logOut };
 
   return (
     <AuthContext.Provider value={authentic}>{children}</AuthContext.Provider>
