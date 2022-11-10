@@ -4,6 +4,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import { app } from "../../firebaseAuth/firebase.config";
@@ -34,13 +35,19 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
 };
 
+// Log out for user
+const logOut = () => {
+  // setLoading(true);
+  return signOut(auth);
+}
+
   //   useEffect for keep catching user by OnAuthStateChange
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
     //   console.log("user inside state change", currentUser);
-      if (currentUser == null || currentUser.emailVerified) {
+      // if (currentUser == null || currentUser.emailVerified) {
         setUser(currentUser);
-      }
+      // }
       //   setLoading(false);
     });
     return () => {
@@ -49,7 +56,7 @@ const AuthProvider = ({ children }) => {
   });
 
   // declar a variable for context api
-  const authentic = { user, createUser, updateUserProfile, signIn };
+  const authentic = { user, createUser, updateUserProfile, signIn, logOut };
 
   return (
     <AuthContext.Provider value={authentic}>{children}</AuthContext.Provider>

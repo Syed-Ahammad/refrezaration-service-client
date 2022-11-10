@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
-  console.log(user)
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
   const link = [
-    {name: 'Home', path: '/',id: 1},
-    {name: 'Services', path: '/allServices', id: 2},
-    {name: 'Blogs', path: '/blogs', id: 3},
-  ]
+    { name: "Home", path: "/", id: 1 },
+    { name: "Services", path: "/allServices", id: 2 },
+    { name: "Blogs", path: "/blogs", id: 3 },
+  ];
 
   return (
     <div className="navbar bg-info text-white">
@@ -36,33 +36,60 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black"
           >
-           
-            {link.map(a=><li key={a.id}><Link  to={a.path}>{a.name}</Link></li> )}
-            {user?  <li>
-              <Link to={'/login'}>Sign Out</Link>
-            </li> :  <li>
-              <Link to={'/login'}>Login</Link>
-            </li>}
+            {link.map((a) => (
+              <li key={a.id}>
+                <Link to={a.path}>{a.name}</Link>
+              </li>
+            ))}
+            {user ? (
+               <>
+               <li>
+                 <Link to={"/addService"}>Add Service</Link>
+               </li>
+               <li>
+                 <Link onClick={logOut} to={"/login"}>Sign Out</Link>
+               </li>
+             </>
+            ) : (
+              <li>
+                <Link to={"/login"}>Login</Link>
+              </li>
+            )}
           </ul>
         </div>
-        <Link to={'/'} className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+        <Link to={"/"} className="btn btn-ghost normal-case text-xl">
+          daisyUI
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
-        {link.map(a=><li key={a.id} ><Link to={a.path}>{a.name}</Link></li> )}
-           {user?  <li>
-              <Link to={'/login'}>Sign Out</Link>
-            </li> :  <li>
-              <Link to={'/login'}>Login</Link>
-            </li>}
+          {link.map((a) => (
+            <li key={a.id}>
+              <Link to={a.path}>{a.name}</Link>
+            </li>
+          ))}
+          {user ? (
+            <>
+              <li>
+                <Link to={"/addService"}>Add Service</Link>
+              </li>
+              <li>
+                <Link onClick={logOut} to={"/login"}>Sign Out</Link>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link to={"/login"}>Login</Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img alt="" src={user?.photoURL} />
-        </div>
-      </label>
+        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            {user?.uid? <img alt="" src={user?.photoURL} />: <></>}
+          </div>
+        </label>
       </div>
     </div>
   );

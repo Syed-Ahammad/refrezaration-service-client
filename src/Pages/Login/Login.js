@@ -1,11 +1,12 @@
 import React, {useContext} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
 
   const {signIn} = useContext(AuthContext);
+  const navigate = useNavigate();
 
 
   //  sign in mathod authentication
@@ -13,7 +14,7 @@ const Login = () => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
-    const password = form.pass.value;
+    const password = form.password.value;
     console.log(email, password);
     signIn(email, password)
     .then(result =>{
@@ -21,6 +22,7 @@ const Login = () => {
         console.log(user);
         form.reset()
         // navigate(from, { replace: true });
+        navigate('/');
 
         })
         .catch(error => {
@@ -95,7 +97,8 @@ const Login = () => {
               {/* <!-- Email input --> */}
               <div className="mb-6">
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 
                   placeholder="Email address"
@@ -106,6 +109,7 @@ const Login = () => {
               <div className="mb-6">
                 <input
                   type="password"
+                  name="password"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 
                   placeholder="Password"
@@ -131,7 +135,7 @@ const Login = () => {
 
               <div className="text-center lg:text-left">
                 <button
-                  type="button"
+                  type="submit"
                   className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                 >
                   Login

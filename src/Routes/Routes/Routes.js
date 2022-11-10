@@ -15,7 +15,7 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                loader: ()=> fetch(`http://localhost:5000/services`),
+                loader: ()=> fetch(`https://refrigaration-service.vercel.app/services`),
                 element:<Home></Home>
             },
             {
@@ -32,7 +32,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/allServices',
-                loader: ()=> fetch(`http://localhost:5000/allServices`),
+                loader: ()=> fetch(`https://refrigaration-service.vercel.app/allServices`),
                 element: <AllServices></AllServices>
             }
         ]
